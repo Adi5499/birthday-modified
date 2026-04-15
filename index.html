@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Yash 🎉</title>
+
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background: linear-gradient(135deg, #ff99cc, #ffe6f0);
+            margin: 0;
+        }
+
+        /* 🎯 Main Content */
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff0066;
+            font-size: 40px;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            background: #ff3399;
+            color: white;
+        }
+
+        button:hover {
+            background: #ff0066;
+            transform: scale(1.1);
+        }
+
+        /* 🎈 Balloons (background) */
+        .balloon {
+            position: fixed;
+            bottom: -150px;
+            width: 50px;
+            height: 70px;
+            border-radius: 50%;
+            animation: floatUp 10s linear infinite;
+            z-index: 1;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: #555;
+            top: 70px;
+            left: 50%;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-120vh); }
+        }
+
+        iframe {
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🎈 Balloons -->
+    <div class="balloon" style="left:10%; background:#ff4d4d;"></div>
+    <div class="balloon" style="left:30%; background:#4da6ff;"></div>
+    <div class="balloon" style="left:50%; background:#66ff66;"></div>
+    <div class="balloon" style="left:70%; background:#ffff66;"></div>
+    <div class="balloon" style="left:90%; background:#cc66ff;"></div>
+
+    <!-- 🎯 Main Content -->
+    <div class="content">
+        <h1>🎂 Happy Birthday, Yash! 🎉</h1>
+        <p>Hope you have an amazing day, Yash! 🎈</p>
+
+        <!-- 🎥 Video -->
+        <h2>🎶 Special Birthday Video 🎶</h2>
+        <iframe width="560" height="315"
+            src="https://drive.google.com/file/d/16dVssObS3RNYh2XqlQPikNEf49GPvpcY/preview"
+            allow="autoplay">
+        </iframe>
+
+        <h2>Are you giving a party? 😏</h2>
+
+        <!-- ✅ Buttons now visible -->
+        <button onclick="yesClicked()">Yes 😍</button>
+        <button onclick="noClicked()">No 😒</button>
+
+        <h3 id="response"></h3>
+    </div>
+
+<script>
+function yesClicked() {
+    confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+    });
+
+    const subject = encodeURIComponent("Party Confirmed 🎉");
+    const body = encodeURIComponent("Hey! I am giving a party 🥳🔥");
+
+    setTimeout(() => {
+        window.open(
+            `https://mail.google.com/mail/?view=cm&fs=1&to=aditya.raj.xqv@gmail.com&su=${subject}&body=${body}`,
+            "_blank"
+        );
+    }, 1500);
+}
+
+function noClicked() {
+    document.getElementById("response").innerText =
+        "⚠️ Last Warning!\nNo party = No respect 😤";
+
+    setTimeout(function() {
+        const subject = encodeURIComponent("Regarding My B-Day Party 😢");
+        const body = encodeURIComponent("Bro, party is not possible today 😭");
+
+        window.location.href =
+            `https://mail.google.com/mail/?view=cm&fs=1&to=aditya.raj.xqv@gmail.com&su=${subject}&body=${body}`;
+    }, 5000);
+}
+</script>
+
+</body>
+</html>
